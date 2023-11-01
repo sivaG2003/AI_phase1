@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Fake News📰 Detection System</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<style>
+	.main{
+		font-family: "Audiowide";
+	}
+	.fake.real{
+		font-family: 'Poppins';font-size: 22px;
+	}
+</style>
+</head>
+<body>
+
+	<div class='main' style="width: 1600px; height:190px; color: #4158D0; font-size: 100px; font-family: Audiowide; font-weight: 1000; word-wrap: break-word">FAKE NEWS DETECTION</div>
+	<!-- <h1 style="">Fake News📰  Detector</h1> -->
+<div class="login">
+    <form action="{{ url_for('predict')}}" method="POST">
+    	<textarea  name="message" rows="6" cols="50" required="required" style="font-size: 18pt" placeholder="Enter The Your News📰"></textarea>
+		<br> </br>
+      <!--  <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button> -->
+	  <div class="buttons">
+	  <button class="btn-hover color-7">Predict</button>
+		</div>
+
+
+        <div class="results">
+
+	{% if prediction == ['FAKE']%}
+	<!--<h2 style="color:red;">Looking Spam⚠️News📰 </h2>-->
+	<div class="border fake">⚠️FAKE NEWS📰</div>
+	{% elif prediction == ['REAL']%}
+	<!--<h2 style="color:green;"><b>Looking Real News📰</b></h2>-->
+	<div class="border real">REAL NEWS📰</div>
+	{% endif %}
+
+	</div>
+
+    </form>
+
+</div>
